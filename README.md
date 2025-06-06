@@ -36,13 +36,13 @@ Notes, build scripts, and associated files for the Configuring BIG-IP AFM versio
 
 ## Lab Name, Duration (hr) and VLANs
 
-| Number                  | New Name                                                   | New Duration | New Series | Mgmt | External | Internal |
-| :---------------------- | :--------------------------------------------------------- | -----------: | :--------- | :--: | :------: | :------: |
-| AFM175-C01L1-NETWORK    | Network Firewall                                           |            2 | AFM175-110 |  X   |    X     |    X     |
-| AFM175-C02L1-IRULES     | Network Firewall iRules and DNS Firewall                   |            1 | AFM175-120 |  X   |    X     |    X     |
-| AFM175-C04L1-DOS        | DoS Protection                                             |            1 | AFM175-140 |  X   |    X     |    X     |
-| AFM175-C05L1-ALLOW      | DoS AlowLists and DoS Sweep Flood                          |            1 | AFM175-150 |  X   |    X     |    X     |
-| AFM175-C08L1-DNS        | DNS DoS and SIP DoS                                        |            1 | AFM175-180 |  X   |    X     |    X     |
-| AFM175-C10L1-INTEL      | IP Intelligence and IP Intelligence Shun                   |            1 | AFM175-200 |  X   |    X     |    X     |
-| AFM175-C12L1-PORT       | Port Misuse and Logs                                       |            1 | AFM175-220 |  X   |    X     |    X     |
-| AFM175-X01-TMSH         | Configuring Network Firewall using tmsh and  IPFIX Logging |            2 | AFM175-500 |  X   |    X     |    X     |
+| Number               | Name                                                       | Duration | Series     | Mgmt | External | Internal |
+| :------------------- | :--------------------------------------------------------- | -------: | :--------- | :--: | :------: | :------: |
+| AFM175-C01L1-NETWORK | Network Firewall                                           |        2 | AFM175-110 |  X   |    X     |    X     |
+| AFM175-C02L1-IRULES  | Network Firewall iRules and DNS Firewall                   |        1 | AFM175-120 |  X   |    X     |    X     |
+| AFM175-C04L1-DOS     | DoS Protection                                             |        1 | AFM175-140 |  X   |    X     |    X     |
+| AFM175-C05L1-ALLOW   | DoS AlowLists and DoS Sweep Flood                          |        1 | AFM175-150 |  X   |    X     |    X     |
+| AFM175-C08L1-DNS     | DNS DoS and SIP DoS                                        |        1 | AFM175-180 |  X   |    X     |    X     |
+| AFM175-C10L1-INTEL   | IP Intelligence and IP Intelligence Shun                   |        1 | AFM175-200 |  X   |    X     |    X     |
+| AFM175-C12L1-PORT    | Port Misuse and Logs                                       |        1 | AFM175-220 |  X   |    X     |    X     |
+| AFM175-X01-TMSH      | Configuring Network Firewall using tmsh and  IPFIX Logging |        2 | AFM175-500 |  X   |    X     |    X     |
