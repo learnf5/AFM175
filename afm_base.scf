@@ -1,0 +1,376 @@
+#TMSH-VERSION: 17.1.0
+
+ltm node /Common/172.16.20.1 {
+    address 172.16.20.1
+}
+ltm node /Common/172.16.20.3 {
+    address 172.16.20.3
+}
+ltm pool /Common/devdos_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/dns_pool {
+    members {
+        /Common/172.16.20.1:53 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/dns_mon
+}
+ltm pool /Common/dos_whitelist_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/fw_irule_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/fw_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/fw_redirect_pool {
+    members {
+        /Common/172.16.20.3:80 {
+            address 172.16.20.3
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/ipi_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/pm_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/shun_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm pool /Common/sip_pool {
+    members {
+        /Common/172.16.20.1:5060 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/gateway_icmp
+}
+ltm pool /Common/sweep_pool {
+    members {
+        /Common/172.16.20.1:80 {
+            address 172.16.20.1
+        }
+    }
+    monitor /Common/http
+}
+ltm virtual /Common/devdos_vs {
+    creation-time 2021-03-18:08:21:39
+    destination /Common/10.10.1.105:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:39
+    mask 255.255.255.255
+    pool /Common/devdos_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/dns_vs {
+    creation-time 2021-03-18:08:21:41
+    destination /Common/10.10.1.109:53
+    ip-protocol udp
+    last-modified-time 2021-03-18:08:21:41
+    mask 255.255.255.255
+    pool /Common/dns_pool
+    profiles {
+        /Common/udp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/dos_whitelist_vs {
+    creation-time 2021-03-18:08:21:40
+    destination /Common/10.10.1.106:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:40
+    mask 255.255.255.255
+    pool /Common/dos_whitelist_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/fw_irule_vs {
+    creation-time 2021-03-18:08:21:42
+    destination /Common/10.10.1.112:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:42
+    mask 255.255.255.255
+    pool /Common/fw_irule_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/fw_redirect_vs {
+    creation-time 2021-03-18:08:21:39
+    destination /Common/10.10.1.101:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:39
+    mask 255.255.255.255
+    pool /Common/fw_redirect_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/fw_vs {
+    creation-time 2021-03-18:08:21:37
+    destination /Common/10.10.1.100:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:37
+    mask 255.255.255.255
+    pool /Common/fw_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/ipi_vs {
+    creation-time 2021-03-18:08:21:39
+    destination /Common/10.10.1.102:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:39
+    mask 255.255.255.255
+    pool /Common/ipi_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    source-address-translation {
+        type automap
+    }
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/pm_vs {
+    creation-time 2021-03-18:08:21:42
+    destination /Common/10.10.1.111:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:42
+    mask 255.255.255.255
+    pool /Common/pm_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/shun_vs {
+    creation-time 2021-03-18:08:21:41
+    destination /Common/10.10.1.108:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:41
+    mask 255.255.255.255
+    pool /Common/shun_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/sip_vs {
+    creation-time 2021-03-18:08:21:41
+    destination /Common/10.10.1.110:5060
+    ip-protocol udp
+    last-modified-time 2021-03-18:08:21:41
+    mask 255.255.255.255
+    pool /Common/sip_pool
+    profiles {
+        /Common/udp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual /Common/sweep_vs {
+    creation-time 2021-03-18:08:21:40
+    destination /Common/10.10.1.107:80
+    ip-protocol tcp
+    last-modified-time 2021-03-18:08:21:40
+    mask 255.255.255.255
+    pool /Common/sweep_pool
+    profiles {
+        /Common/tcp { }
+    }
+    serverssl-use-sni disabled
+    source 0.0.0.0/0
+    translate-address enabled
+    translate-port enabled
+}
+ltm virtual-address /Common/10.10.1.100 {
+    address 10.10.1.100
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.101 {
+    address 10.10.1.101
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.102 {
+    address 10.10.1.102
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.105 {
+    address 10.10.1.105
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.106 {
+    address 10.10.1.106
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.107 {
+    address 10.10.1.107
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.108 {
+    address 10.10.1.108
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.109 {
+    address 10.10.1.109
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.110 {
+    address 10.10.1.110
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.111 {
+    address 10.10.1.111
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm virtual-address /Common/10.10.1.112 {
+    address 10.10.1.112
+    arp enabled
+    mask 255.255.255.255
+    traffic-group /Common/traffic-group-1
+}
+ltm classification auto-update settings {
+    auto-update-interval weekly
+    enabled no
+}
+ltm monitor dns /Common/dns_mon {
+    accept-rcode no-error
+    adaptive disabled
+    answer-contains query-type
+    defaults-from /Common/dns
+    destination *:*
+    interval 15
+    qname www.f5trn.com
+    qtype a
+    recv 172.16.20.100
+    time-until-up 0
+    timeout 16
+}
+ltm profile server-ssl /Common/do-not-remove-without-replacement {
+    app-service none
+}
+net dns-resolver /Common/f5-aws-dns {
+    forward-zones {
+        amazonaws.com {
+            nameservers {
+                8.8.8.8:53 { }
+            }
+        }
+        idservice.net {
+            nameservers {
+                8.8.8.8:53 { }
+            }
+        }
+        shpapi.com {
+            nameservers {
+                8.8.8.8:53 { }
+            }
+        }
+    }
+    route-domain /Common/0
+}
+sys provision afm {
+    level nominal
+}
+sys provision ltm {
+    level nominal
+}

@@ -1,0 +1,29 @@
+
+
+IP Intelligence Shun Lab 2
+
+tmsh modify security dos device-config dos-device-config dos-device-vector { sweep { auto-blacklisting enabled blacklist-category shun_category blacklist-detection-seconds 1 blacklist-duration 14400 }}
+
+
+
+Network Firewall iRules Lab 1
+
+when FLOW_INIT {
+log local0. "AFM fw_irule called ..."
+if {[virtual] ends_with "/fw_irule_vs"}
+{
+ACL::action reset
+log local0. "[virtual] reset ..."
+}
+}
+
+
+when FLOW_INIT {
+log local0. "AFM fw_irule called ..."
+if {[virtual] ends_with "/fw_irule_vs"}
+{
+ACL::action reset
+log local0. "[virtual] reset ..."
+}
+}
+
